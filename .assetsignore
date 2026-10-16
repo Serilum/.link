@@ -1,4 +1,7 @@
 .git
 .github
+.wrangler
 counter
+.gitignore
 README.md
+wrangler.toml
