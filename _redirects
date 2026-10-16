@@ -1,0 +1,16 @@
+# link.serilum.com
+
+/                  https://serilum.com                                     302
+/favicon.ico       https://serilum.com/assets/images/favicon.ico           302
+
+# Profiles
+/github            https://github.com/Serilum                              302
+/curseforge        https://curseforge.com/members/serilum/projects         302
+/modrinth          https://modrinth.com/user/serilum                       302
+/patreon           https://patreon.com/serilum                             302
+
+# GitHub Repos
+/issues            https://github.com/Serilum/.issue-tracker/issues        302
+
+# Anything else
+/*                 https://serilum.com                                     302

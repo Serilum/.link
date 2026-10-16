@@ -1,0 +1,28 @@
+name: Validate Redirects via Python
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - '_redirects'
+      - '.github/scripts/ValidateRedirects.py'
+      - '.github/workflows/validate-redirects.yml'
+  pull_request:
+    paths:
+      - '_redirects'
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+
+      - name: checkout repo content
+        uses: actions/checkout@v7
+
+      - name: setup python
+        uses: actions/setup-python@v7
+        with:
+          python-version: '3.12'
+
+      - name: execute py script
+        run: python .github/scripts/ValidateRedirects.py

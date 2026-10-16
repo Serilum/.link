@@ -1,0 +1,12 @@
+#:schema ../node_modules/wrangler/config-schema.json
+name = "link-serilum-com-um"
+main = "index.js"
+compatibility_date = "2026-10-01"
+send_metrics = false
+workers_dev = false
+preview_urls = false
+
+[vars]
+LINK_HOSTNAME = "link.serilum.com"
+UM_SEND_URL = "https://um.serilum.com/api/send"
+UM_WEBSITE_ID = "3c1b7ed0-1e29-47c4-9fc2-405f63fe1f9e"
