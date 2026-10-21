@@ -6,6 +6,11 @@ send_metrics = false
 workers_dev = false
 preview_urls = false
 
+[[rules]]
+type = "Text"
+globs = ["**/_redirects"]
+fallthrough = true
+
 [vars]
 LINK_HOSTNAME = "link.serilum.com"
 UM_SEND_URL = "https://um.serilum.com/api/send"

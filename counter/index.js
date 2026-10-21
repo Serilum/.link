@@ -1,4 +1,7 @@
+import redirects from "../_redirects";
+
 const untrackedpaths = ["/favicon.ico", "/robots.txt"];
+const activelinks = getActiveLinks(redirects);
 const botuseragents = /bot|crawl|spider|slurp|preview|embed|facebookexternalhit|whatsapp|curl|wget|python|java\/|go-http|okhttp|axios|node-fetch|headless/i;
 
 export default {
@@ -21,7 +24,7 @@ function isTrackable(request, url) {
 		return false;
 	}
 
-	if (untrackedpaths.includes(url.pathname)) {
+	if (untrackedpaths.includes(url.pathname) || !activelinks.has(url.pathname)) {
 		return false;
 	}
 
@@ -63,6 +66,23 @@ async function sendPageview(request, url, env) {
 	} catch (error) {
 		console.log("Could not send the pageview for " + url.pathname + ": " + error);
 	}
+}
+
+function getActiveLinks(redirectstext) {
+	let links = new Set();
+	for (let line of redirectstext.split("\n")) {
+		let source = line.trim().split(/\s+/)[0];
+		if (!source || !source.startsWith("/")) {
+			continue;
+		}
+
+		let isdynamic = source.includes("*") || /:[A-Za-z]/.test(source);
+		if (!isdynamic) {
+			links.add(source);
+		}
+	}
+
+	return links;
 }
 
 function getFirstLanguage(acceptlanguage) {
